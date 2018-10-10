@@ -1,8 +1,8 @@
-﻿#Domain Join
-Get-NetAdapter | Set-DnsClientServerAddress -ServerAddresses ("192.168.1.4","8.8.8.8")
-$username = "abc\xyz" 
-$password = "pqrs" | ConvertTo-SecureString -asPlainText -Force
+﻿$dfqdn = "contoso.com"
+$dnetb = "contoso"
+$fmode = "Win2012"
+$dmode = "Win2012"
+$password = ConvertTo-SecureString "Password123#" -AsPlainText -Force
 
-$credential = New-Object System.Management.Automation.PSCredential($username,$password)
-Add-Computer -DomainName abcd.com -Credential $credential -Restart -Force
-
+Install-windowsfeature -name AD-Domain-Services –IncludeManagementTools
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode $dmode -DomainName $dfqdn -DomainNetbiosName $dnetb -ForestMode $fmode -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true -safemodeadministratorpassword $password
