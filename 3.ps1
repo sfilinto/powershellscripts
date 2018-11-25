@@ -4,5 +4,5 @@ $username = "CONTOSO\adfsadmin"
 $password = "Password123#" | ConvertTo-SecureString -asPlainText -Force
 
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
-Add-Computer -DomainName abcd.com -Credential $credential -Restart -Force
+Add-Computer -DomainName contoso.com -Credential $credential -Restart -Force
 
