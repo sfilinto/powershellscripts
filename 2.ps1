@@ -1,5 +1,5 @@
 ﻿$dfqdn = "contoso.com"
-$dnetb = "contoso"
+$dnetb = "CONTOSO"
 $fmode = "Win2012"
 $dmode = "Win2012"
 $password = ConvertTo-SecureString "Password123#" -AsPlainText -Force
